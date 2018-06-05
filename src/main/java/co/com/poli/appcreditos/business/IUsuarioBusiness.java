@@ -17,6 +17,11 @@ public interface IUsuarioBusiness {
     List<Usuario>obtenerListaUsuarios();
     String crearUsuario(Usuario usuario);
     Usuario obtenerUsuario(String documento);
+    String creditoMasSolicitado();
+    String creditoMayorNumeroPrestamos();
+    String mayoresPrestadores();
+    String logicaNegocio();
+    
     
     
 }

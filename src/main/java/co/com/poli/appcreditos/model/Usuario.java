@@ -18,11 +18,11 @@ public class Usuario {
     private String apellidos;
     private String numCredito;
     private Double monto;
-    private Boolean tipoTrabajador;
+    private String tipoTrabajador;
     private String tipoCredito;
-    private Boolean trabajaCompañia;
+    private String trabajaCompañia;
 
-    public Usuario(String documento, String nombres, String apellidos, String numCredito, Double monto, Boolean tipoTrabajador, String tipoCredito, Boolean trabajaCompañia) {
+    public Usuario(String documento, String nombres, String apellidos, String numCredito, Double monto, String tipoTrabajador, String tipoCredito, String trabajaCompañia) {
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -33,11 +33,11 @@ public class Usuario {
         this.trabajaCompañia = trabajaCompañia;
     }
 
-    public Boolean getTrabajaCompañia() {
+    public String getTrabajaCompania() {
         return trabajaCompañia;
     }
 
-    public void setTrabajaCompañia(Boolean trabajaCompañia) {
+    public void setTrabajaCompania(String trabajaCompañia) {
         this.trabajaCompañia = trabajaCompañia;
     }
 
@@ -57,11 +57,11 @@ public class Usuario {
         this.monto = monto;
     }
 
-    public Boolean getTipoTrabajador() {
+    public String getTipoTrabajador() {
         return tipoTrabajador;
     }
 
-    public void setTipoTrabajador(Boolean tipoTrabajador) {
+    public void setTipoTrabajador(String tipoTrabajador) {
         this.tipoTrabajador = tipoTrabajador;
     }
 

@@ -6,6 +6,7 @@
 package co.com.poli.appcreditos.data;
 
 import co.com.poli.appcreditos.model.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,17 @@ import java.util.List;
 public class UsuarioData {
  
     
-     private static List<Usuario>listaUsuarios;
+     private static List<Usuario>listaUsuarios = null;
+     
+     
+     static {
+         listaUsuarios = new ArrayList<Usuario>(){
+             {
+                 add(new Usuario("12345", "Santiago", "Rios", "3453", 500D, "Dependiente", "Vivienda", "No"));
+                 
+             }
+         };
+     }
 
     public static List<Usuario> getListaUsuarios() {
         return listaUsuarios;

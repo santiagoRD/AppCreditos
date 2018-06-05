@@ -15,7 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>App Cursos</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
@@ -27,39 +27,27 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Navbar</a>
-      
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
+        <a class="navbar-brand" href="${pageContext.servletContext.contextPath}/index.jsp">App Creditos</a>
+        <a class="navbar-brand" href="${pageContext.servletContext.contextPath}/RegistroServlet?accion=listar">Listar</a>
+        <a class="navbar-brand" href="${pageContext.servletContext.contextPath}/RegistroServlet?accion=creditoMasUsado">Credito mas solicitado</a>
+        <a class="navbar-brand" href="${pageContext.servletContext.contextPath}/RegistroServlet?accion=valorAcumulado">Credito con mayor numero de prestamos</a>
+        <a class="navbar-brand" href="${pageContext.servletContext.contextPath}/RegistroServlet?accion=prestamos">Mayores prestadores</a>
     </nav>
 
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+                <div class="container">
+                    <center>
+                        <img src="http://noticias.universia.net.co/net/images/educacion/8/8-/8-c/8-cursos-online-gratuitos-de-harvard-sobre-la-historia-del-libro.jpg" height="125" width="200">
+                        <br>
+                        <h2>App Creditos</h2>
+                        <h3>PROGRAMACIÓN DISTRIBUIDA Y PARALELA</h3>
+                        
+                    </center>
+                    </div>
+            </div>
 
       <br>
       <br>
@@ -67,70 +55,83 @@
       <div class="container">
         <!-- Example row of columns -->
         <form method="post"
-              action="${pageContext.servletContext.contextPath}/UsuarioServlet">
+              action="${pageContext.servletContext.contextPath}/RegistroServlet">
+                
                 <div class="form-row">
                             <div class="col">
-                                <input name="txtdocumento" type="text" 
-                                       class="form-control" 
+                                <input name="txtdocumento" type="text" id="inputState" class="form-control"
+                                       class="form-control"  required
                                        placeholder="Documento">
                             </div>
                             <div class="col"></div>
                         </div>
                         <div class="form-row">
                             <div class="col">
-                                <input name="txtnombres" type="text" 
-                                       class="form-control" 
+                                <input name="txtnombres" type="text" id="inputState" class="form-control"
+                                       class="form-control" required 
                                        placeholder="Nombres">
                             </div>
                             <div class="col">
-                                <input name="txtapellidos" type="text" 
-                                       class="form-control" 
+                                <input name="txtapellidos" type="text" id="inputState" class="form-control"
+                                       class="form-control" required 
                                        placeholder="Apellidos">
                             </div>
 
                         </div>
                         <div class="form-row">
-                            <div class="col">
-                                <input name="txtnumcred" type="text" 
+                            <div class="col-md-6">
+                                <input name="txtnumcred" type="text" id="inputState" required
                                        class="form-control" 
                                        placeholder="numero credito">
                             </div>
 
                         </div>
                         <div class="form-row">
-                            <div class="col">
-                                <select name="txtmonto" id="inputState" class="form-control">
-                                    <option value="activo" selected>500</option>
-                                    <option value="inactivo" >3000</option>
+                            <div class="col-md-6">
+                                <select name="txtmonto" id="inputState" class="form-control" required>
+                                    <option value="" selected>Monto</option>
+                                    <option value="500">500</option>
+                                    <option value="1000">1000</option>
+                                    <option value="1500">1500</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2500">2500</option>
+                                    <option value="3000" >3000</option>
                                 </select>
                             </div>
-                            <div class="col">
-                                <select name="txttipotrab" id="inputState" class="form-control">
-                                    <option value="activo" selected>Independiente</option>
-                                    <option value="inactivo" >Dependiente</option>
+                            <div class="col-md-6">
+                                <select name="txttipotrab" id="inputState" class="form-control" required>
+                                    <option value="" selected>Tipo Trabajo</option>
+                                    <option value="Independiente" >Independiente</option>
+                                    <option value="Dependiente" >Dependiente</option>
                                 </select>
                             </div>
-                            <div class="col">
-                                <select name="txttipocred" id="inputState" class="form-control">
-                                    <option value="administrador" selected>Vivienda</option>
-                                    <option value="consulta" >Estudio</option>
-                                    <option value="visitante" >Libre inversion</option>
+                            <div class="col-md-6">
+                                <select name="txttipocred" id="inputState" class="form-control" required>
+                                    <option value="" selected>Tipo Credito</option>
+                                    <option value="Vivienda" >Vivienda</option>
+                                    <option value="Estudio" >Estudio</option>
+                                    <option value="Libre Inversion" >Libre inversion</option>
                                 </select>
                             </div>
-                            <div class="col">
-                                <select name="txttrabaja" id="inputState" class="form-control">
-                                    <option value="activo" selected>Si</option>
-                                    <option value="inactivo" >No</option>
+                            <div class="col-md-6">
+                                <select name="txttrabaja" id="inputState" class="form-control" required>
+                                    <option value="" selected>Trabaja</option>
+                                    <option value="Si" >Si</option>
+                                    <option value="No" >No</option>
                                 </select>
                             </div>
 
                         </div>
+                <br>
+                
                         <div class="form-row">
                             <div class="col">
+                                <center>
                                 <button name="accion" value="crear" 
                                         type="submit" 
                                          class="btn btn-primary">
                                      Registrar</button>
+                                    </center>
                             </div>
 
                         </div>
@@ -140,7 +141,11 @@
     </main>
 
     <footer class="container">
-      <p>&copy; Company 2017-2018</p>
+        <center>
+            <br>
+            <br>
+      <p>&copy;Politecnico JIC 2018-I</p>
+      </center>
     </footer>
 
     <!-- Bootstrap core JavaScript

@@ -6,8 +6,10 @@
 package co.com.poli.appcreditos.controller;
 
 import co.com.poli.appcreditos.business.implementation.UsuarioBusinessImpl;
+import co.com.poli.appcreditos.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,7 @@ public class RegistroServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            HttpSession session = request.getSession(true);
+            HttpSession session = request.getSession();
             RequestDispatcher rd = null;
             UsuarioBusinessImpl uBusinessImpl = new UsuarioBusinessImpl();
             String accion = request.getParameter("accion");
@@ -41,12 +43,42 @@ public class RegistroServlet extends HttpServlet {
                     String documento = request.getParameter("txtdocumento");
                     String nombre = request.getParameter("txtnombres");
                     String apellidos = request.getParameter("txtapellidos");
+                    Double monto = Double.valueOf(request.getParameter("txtmonto"));
+                    String tipoTrabajo = request.getParameter("txttipotrab");
                     String numCred = request.getParameter("txtnumcred");
-                    String monto = request.getParameter("txtmonto");
-                    Boolean tipoTrabajo = Boolean.valueOf(request.getParameter("txttipotrab"));
                     String tipoCredito = request.getParameter("txttipocred");
+                    String trabajaCompania = request.getParameter("txttrabaja");
+                    Usuario usuario = new Usuario(documento, nombre, apellidos, numCred, monto, tipoTrabajo, tipoCredito, trabajaCompania);
                     
+                    String mensaje = uBusinessImpl.crearUsuario(usuario);
+                    session.setAttribute("MENSAJE", mensaje);
+                    rd = request.getRequestDispatcher("mensaje.jsp");
+                    break;
+                    
+                case "listar":
+                    List<Usuario> listaUsuarios = uBusinessImpl.obtenerListaUsuarios();
+                    session.setAttribute("LISTADO", listaUsuarios);
+                    rd = request.getRequestDispatcher("/views/usuariosLista.jsp");
+                    break;
+                case "creditoMasUsado":
+                    String mensaje1 = uBusinessImpl.creditoMasSolicitado();
+                    session.setAttribute("MENSAJE", mensaje1);
+                    rd = request.getRequestDispatcher("mensaje.jsp");
+                    break;
+                case "valorAcumulado":
+                    String mensaje2 = uBusinessImpl.creditoMayorNumeroPrestamos();
+                    session.setAttribute("MENSAJE", mensaje2);
+                    rd = request.getRequestDispatcher("mensaje.jsp");
+                    break;
+                case "prestamos":
+                    String mensaje3 = uBusinessImpl.mayoresPrestadores();
+                    session.setAttribute("MENSAJE", mensaje3);
+                    rd = request.getRequestDispatcher("mensaje.jsp");
+                    break;
+                default:
+                    break;
             }
+            rd.forward(request, response);
             
     }
 
