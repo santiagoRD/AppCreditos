@@ -5,7 +5,7 @@
  */
 package co.com.poli.appcreditos.business;
 
-import co.com.poli.appcreditos.model.Usuario;
+import co.com.poli.appcreditos.model.Tblusuarios;
 import java.util.List;
 
 /**
@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface IUsuarioBusiness {
     
-    List<Usuario>obtenerListaUsuarios();
-    String crearUsuario(Usuario usuario);
-    Usuario obtenerUsuario(String documento);
+    List<Tblusuarios>obtenerListaUsuarios();
+    Boolean crearUsuario(Tblusuarios usuario);
+    Tblusuarios obtenerUsuario(String documento);
     String creditoMasSolicitado();
     String creditoMayorNumeroPrestamos();
     String mayoresPrestadores();
-    String logicaNegocio();
+    Boolean logicaNegocio(Tblusuarios usuario);
     
     
     

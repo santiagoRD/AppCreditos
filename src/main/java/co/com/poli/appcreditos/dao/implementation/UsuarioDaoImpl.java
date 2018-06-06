@@ -6,39 +6,49 @@
 package co.com.poli.appcreditos.dao.implementation;
 
 import co.com.poli.appcreditos.dao.IUsuarioDao;
-import co.com.poli.appcreditos.data.UsuarioData;
-import co.com.poli.appcreditos.model.Usuario;
+import co.com.poli.appcreditos.jpacontroller.TblusuariosJpaController;
+import co.com.poli.appcreditos.model.Tblusuarios;
+import co.com.poli.appcreditos.util.JPAFactory;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author SANTIAGO
  */
 public class UsuarioDaoImpl implements IUsuarioDao{
+    
+    
 
     @Override
-    public List<Usuario> obtenerListaUsuarios() {
-        return UsuarioData.getListaUsuarios();
+    public List<Tblusuarios> obtenerListaUsuarios() {
+        List<Tblusuarios>listado = new ArrayList<>();
+        TblusuariosJpaController tblusuariosJpaController = new TblusuariosJpaController(JPAFactory.getFACTORY());
+        listado = tblusuariosJpaController.findTblusuariosEntities();
+        return listado;
     }
 
     @Override
-    public String crearUsuario(Usuario usuario) {
-        List<Usuario>listaUsuarios = UsuarioData.getListaUsuarios();
-        listaUsuarios.add(usuario);
-        UsuarioData.setListaUsuarios(listaUsuarios);
-        return "Usuario creado";
-    }
-
-    @Override
-    public Usuario obtenerUsuario(String documento) {
-        Usuario user = null;
-        List<Usuario>listaUsuarios = UsuarioData.getListaUsuarios();
-        for (Usuario userList : listaUsuarios) {
-            if(userList.getDocumento().equals(documento)){
-                user = userList;
-            }
+    public Boolean crearUsuario(Tblusuarios usuario) {
+        Boolean sw = false;
+        try {
+            TblusuariosJpaController tblusuariosJpaController = new TblusuariosJpaController(JPAFactory.getFACTORY());
+            tblusuariosJpaController.create(usuario);  
+        } catch (Exception ex) {
+            sw = true;
+            Logger.getLogger(UsuarioDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
-        return user;
+        return sw;
     }
+
+    @Override
+    public Tblusuarios obtenerUsuario(String documento) {
+        TblusuariosJpaController tblusuariosJpaController = new TblusuariosJpaController(JPAFactory.getFACTORY());
+        return tblusuariosJpaController.findTblusuarios(documento);
+    }
+    
     
 }

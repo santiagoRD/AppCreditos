@@ -71,13 +71,13 @@
                                
                                 <tr>
                                     <td><c:out value="${usuario.getDocumento()}"/></td>
-                                    <td><c:out value="${usuario.getNombres()}"/></td>
+                                    <td><c:out value="${usuario.getNombre()}"/></td>
                                     <td><c:out value="${usuario.getApellidos()}"/></td>
-                                    <td><c:out value="${usuario.getNumCredito()}"/></td>
+                                    <td><c:out value="${usuario.getNumcredito()}"/></td>
                                     <td><c:out value="${usuario.getMonto()}"/></td>
-                                    <td><c:out value="${usuario.getTipoTrabajador()}"/></td>
-                                    <td><c:out value="${usuario.getTipoCredito()}"/></td>
-                                    <td><c:out value="${usuario.getTrabajaCompania()}"/></td>
+                                    <td><c:out value="${usuario.getTipotrabajador()}"/></td>
+                                    <td><c:out value="${usuario.getTipocredito()}"/></td>
+                                    <td><c:out value="${usuario.getTrabajacompañia()}"/></td>
                                 </tr>
                                 
                             </c:forEach>
